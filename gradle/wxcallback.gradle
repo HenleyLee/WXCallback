@@ -1,0 +1,13 @@
+apply plugin: 'com.henley.wxcallback'
+
+wxCallback {
+    // 是否启用微信回调插件
+    wxCallbackEnable = true
+    // 是否启用将WXEntryActivity添加到AndroidManifest.xml文件中
+    wxEntryEnable = true
+    // 是否启用将WXPayEntryActivity添加到AndroidManifest.xml文件中
+    wxPayEntryEnable = true
+    // 忽略添加到AndroidManifest.xml文件中的包名白名单
+    wxCallbackWhiteList = [
+    ]
+}

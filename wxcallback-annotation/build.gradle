@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+dependencies {
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def libGroup = 'com.henley.wxcallback'
+def libName = 'wxcallback-annotation'
+def libVersion = '1.0.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repository'))
+            pom.groupId = libGroup
+            pom.artifactId = libName
+            pom.version = libVersion
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+    }
+}

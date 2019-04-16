@@ -1,0 +1,4 @@
+include ':app'
+include ':wxcallback-build'
+include ':wxcallback-compiler'
+include ':wxcallback-annotation'
