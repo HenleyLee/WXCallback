@@ -92,7 +92,7 @@ public class WXCallbackProcessor extends AbstractProcessor {
                 .indent(Consts.INDENT)
                 .build()
                 .writeTo(mFiler);
-        logger.info("Generated WXCallback, name is " + packageName + "." + className);
+        logger.info("Generated WXCallback, name is " + packageName + Consts.WXAPI_PACKAGE + "." + className);
     }
 
     @Override
