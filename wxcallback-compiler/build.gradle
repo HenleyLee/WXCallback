@@ -1,11 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
-
-allprojects {
-    repositories {
-        maven { url "../repository" }
-    }
-}
+apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     implementation 'com.henley.wxcallback:wxcallback-annotation:1.0.0'
@@ -48,4 +43,30 @@ javadoc {
         author true
         version true
     }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+
+def siteUrl = 'https://github.com/HenleyLee/WXCallback'
+
+publish {
+    userOrg = 'henleylee'
+    groupId = libGroup
+    artifactId = libName
+    publishVersion = libVersion
+    desc = '根据注解自动生成 WXEntryActivity 和 WXPayEntryActivity 的注解解析器。'
+    website = siteUrl
 }

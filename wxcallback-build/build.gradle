@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     compile gradleApi()
@@ -41,4 +42,30 @@ javadoc {
         author true
         version true
     }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+
+def siteUrl = 'https://github.com/HenleyLee/WXCallback'
+
+publish {
+    userOrg = 'henleylee'
+    groupId = libGroup
+    artifactId = libName
+    publishVersion = libVersion
+    desc = 'WXEntryActivity 和 WXPayEntryActivity 自动注册到 AndroidManifest.xml 文件中的构建工具。'
+    website = siteUrl
 }
